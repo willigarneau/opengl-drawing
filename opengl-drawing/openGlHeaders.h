@@ -1,4 +1,6 @@
-// this is the regroupment of every needed dependency in the project
+// This is the regroupment of every needed dependency in the project
+
+// --- STRUCTURES
 struct RGBCOLOR {
 	float red;
 	float green;
@@ -6,6 +8,7 @@ struct RGBCOLOR {
 	char* colorName;
 };
 
+// -- MODULES
 #include "Dependencies\glew\glew.h"
 #include "Dependencies\freeglut\freeglut.h"
 #include <iostream>
@@ -18,4 +21,5 @@ struct RGBCOLOR {
 #include "Line.h"
 #include <vector>
 
+// - NAMESPACES
 using namespace std;

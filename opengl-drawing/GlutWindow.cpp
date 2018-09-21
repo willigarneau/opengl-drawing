@@ -13,7 +13,8 @@ GlutWindow::GlutWindow(int windowWidth, int windowHeight, char* windowName)
 	cout << "Bienvenue dans l'outil de dessin" << endl << "Pour commencer, veuillez choisir un outil et une couleur." << endl << endl;
 }
 
-void GlutWindow::ClearWindow(Point p, Line l) {
+void GlutWindow::ClearWindow(Point p, Line l, Triangle t) {
 	p.Clear();
 	l.Clear();
+	t.Clear();
 }
