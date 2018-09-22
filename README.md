@@ -4,7 +4,7 @@
   Made with FreeGlut, Glew and OpenGL in C++
   </p>
 
- > 👨‍🎨 Practical Work 1 in Infography at Cegep Lévis-Lauzon. Put our knowledge of OpenGL into practice to create a basic drawing program.🎨🖌 
+ > 👨‍🎨 Practical Work 1 in Infography at Cegep Lévis-Lauzon. Put our knowledge of OpenGL into practice to create a basic drawing program.  🎨  🖌 
 
 #### Part 1 : Draw Points
 
