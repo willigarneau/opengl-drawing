@@ -1,19 +1,18 @@
 #include "openGlHeaders.h"
-#include "Triangle.h"
 
 vector<GLfloat> triangleGrid;
 vector<GLfloat> triangleColorGrid;
-float firstTempClick[2];
-float secondTempClick[2];
-bool firstClicked = false, secondClicked = false;
+float triFirstTempClick[2];
+float triSecondTempClick[2];
+bool triFirstClicked = false, triSecondClicked = false;
 
 Triangle::Triangle() {}
 
 void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 {
 	GLfloat vertex[12] = {
-		firstTempClick[0], firstTempClick[1], 0.0f, 1.0f,
-		secondTempClick[0], secondTempClick[1], 0.0f, 1.0f,
+		triFirstTempClick[0], triFirstTempClick[1], 0.0f, 1.0f,
+		triSecondTempClick[0], triSecondTempClick[1], 0.0f, 1.0f,
 		x, y, 0.0f, 1.0f,
 	};
 	GLfloat vertexColor[4] = {
@@ -50,7 +49,6 @@ void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 	#pragma endregion
 
 	GLuint vertexBuffer, colorBuffer;
-	bool setColor = true;
 	for (int i = 0; i < Size(); i += 12) {
 
 		GLfloat cpyVertex[12] = {
@@ -76,14 +74,13 @@ void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 		glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertexColor), &cpyVertexColor, GL_STREAM_DRAW);
 		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
-		setColor = false;
 		// draw
 		glUseProgram(program);
 		glLineWidth(3);
 		glDrawArrays(GL_TRIANGLES, 0, Size() / 4);
 		glDisableVertexAttribArray(0);
-		firstClicked = false;
-		secondClicked = false;
+		triFirstClicked = false;
+		triSecondClicked = false;
 	}
 }
 
@@ -101,29 +98,31 @@ void Triangle::Clear()
 {
 	triangleGrid.clear();
 	triangleColorGrid.clear();
+	triFirstClicked = false;
+	triSecondClicked = false;
 }
 
 bool Triangle::isFirstClicked()
 {
-	return firstClicked;
+	return triFirstClicked;
 }
 
 bool Triangle::isSecondClicked()
 {
-	return secondClicked;
+	return triSecondClicked;
 }
 
 void Triangle::firstClick(float x, float y)
 {
-	firstClicked = true;
-	firstTempClick[0] = x;
-	firstTempClick[1] = y;
+	triFirstClicked = true;
+	triFirstTempClick[0] = x;
+	triFirstTempClick[1] = y;
 }
 void Triangle::secondClick(float x, float y)
 {
-	secondClicked = true;
-	secondTempClick[0] = x;
-	secondTempClick[1] = y;
+	triSecondClicked = true;
+	triSecondTempClick[0] = x;
+	triSecondTempClick[1] = y;
 }
 
 void Triangle::Process(float x, float y, RGBCOLOR color, GLuint program)

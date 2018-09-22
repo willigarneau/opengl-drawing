@@ -22,6 +22,12 @@
     <Filter Include="Fichiers sources\Shapes">
       <UniqueIdentifier>{702211cf-2c16-4180-9de9-ed5968a452d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Shapes headers">
+      <UniqueIdentifier>{bdc9bc7d-600d-4c17-8b0e-7c985ac8784c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Ressources headers">
+      <UniqueIdentifier>{253dca7e-4951-4118-a3cd-6b34cc4e66b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -45,28 +51,34 @@
     <ClCompile Include="Triangle.cpp">
       <Filter>Fichiers sources\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Quadrilateral.cpp">
+      <Filter>Fichiers sources\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShaderLoader.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="GlutWindow.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="openGlHeaders.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Triangle.h">
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
     </ClInclude>
     <ClInclude Include="Tool.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadrilateral.h">
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Point.h">
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GlutWindow.h">
+      <Filter>Fichiers d%27en-tête\Ressources headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Fichiers d%27en-tête\Ressources headers</Filter>
+    </ClInclude>
+    <ClInclude Include="openGlHeaders.h">
+      <Filter>Fichiers d%27en-tête\Ressources headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,7 @@ struct RGBCOLOR {
 #include "Tool.h"
 #include "GlutWindow.h"
 #include "Triangle.h"
+#include "Quadrilateral.h"
 #include "Line.h"
 #include <vector>
 

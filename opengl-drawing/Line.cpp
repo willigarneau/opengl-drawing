@@ -1,5 +1,4 @@
 #include "openGlHeaders.h"
-#include "Line.h"
 
 vector<GLfloat> lineGrid;
 vector<GLfloat> lineColorGrid;
@@ -88,6 +87,7 @@ void Line::Clear()
 {
 	lineGrid.clear();
 	lineColorGrid.clear();
+	clicked = false;
 }
 
 bool Line::isClicked() {
