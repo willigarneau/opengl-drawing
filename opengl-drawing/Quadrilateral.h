@@ -3,7 +3,8 @@ class Quadrilateral
 {
 public:
 	Quadrilateral();
-	void Draw(float x, float y, RGBCOLOR color, GLuint program);
+	void DrawFirstTriangle(float x, float y, RGBCOLOR color, GLuint program);
+	void DrawSecondTriangle(int indice, RGBCOLOR color, GLuint program);
 	int Size();
 	char* Name();
 	void Clear();

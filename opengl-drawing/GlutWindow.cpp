@@ -6,7 +6,6 @@ GlutWindow::GlutWindow(int windowWidth, int windowHeight, char* windowName)
 {
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 	glutInitWindowSize(windowWidth, windowHeight);
-	glLineWidth(15);
 	glutCreateWindow((char*)windowName);
 	glewInit();
 

@@ -26,6 +26,7 @@ void handleMenuFunctions(int value)
 	if (value == 1) { usedColor.red = 1.0f; usedColor.green = 0.0f; usedColor.blue = 0.0f; usedColor.colorName = (char*)"Rouge"; } // red
 	if (value == 2) { usedColor.red = 0.0f; usedColor.green = 0.0f; usedColor.blue = 1.0f;  usedColor.colorName = (char*)"Bleu"; } // blue
 	if (value == 3) { usedColor.red = 0.0f; usedColor.green = 1.0f; usedColor.blue = 0.0f; usedColor.colorName = (char*)"Vert"; } // green
+	if (value == 8) { usedColor.red = 1.0f; usedColor.green = 1.0f; usedColor.blue = 0.0f; usedColor.colorName = (char*)"Jaune"; } // Yellow
 	if (value == 4) { tool.setSelectedTool(1); painting.ClearWindow(point, line, triangle, quad); }
 	if (value == 5) { tool.setSelectedTool(2); painting.ClearWindow(point, line, triangle, quad); }
 	if (value == 6) { tool.setSelectedTool(3); painting.ClearWindow(point, line, triangle, quad); }
@@ -45,6 +46,7 @@ void createMouseMenu()
 	glutAddMenuEntry("Red", 1);
 	glutAddMenuEntry("Blue", 2);
 	glutAddMenuEntry("Green", 3);
+	glutAddMenuEntry("Yellow", 8);
 
 	shapesSubMenu = glutCreateMenu(handleMenuFunctions);
 	glutAddMenuEntry("Point", 4);
