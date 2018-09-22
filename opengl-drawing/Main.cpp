@@ -31,7 +31,7 @@ void handleMenuFunctions(int value)
 	if (value == 5) { tool.setSelectedTool(2); painting.ClearWindow(point, line, triangle, quad); }
 	if (value == 6) { tool.setSelectedTool(3); painting.ClearWindow(point, line, triangle, quad); }
 	if (value == 7) { tool.setSelectedTool(4); painting.ClearWindow(point, line, triangle, quad); }
-	if (value == 0) { glutLeaveMainLoop(); }
+	if (value == 0) { glutLeaveMainLoop(); painting.ClearWindow(point, line, triangle, quad); }
 	if (value == -1) { painting.ClearWindow(point, line, triangle, quad); }
 
 	cout << "La couleur actuellement choisie est : " << usedColor.colorName << endl;
