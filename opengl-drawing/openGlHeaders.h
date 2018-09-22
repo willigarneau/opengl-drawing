@@ -20,6 +20,7 @@ struct RGBCOLOR {
 #include "Triangle.h"
 #include "Quadrilateral.h"
 #include "Line.h"
+#include "Pencil.h"
 #include <vector>
 
 // - NAMESPACES
