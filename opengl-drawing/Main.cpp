@@ -102,12 +102,14 @@ int main(int argc, char **argv)
 {
 	ShaderLoader shader;
 
-	usedColor.red = 1.0f; usedColor.green = 1.0f; usedColor.blue = 1.0f; usedColor.colorName = (char*)"Blanc";
+	usedColor.red = 0.0f; usedColor.green = 1.0f; usedColor.blue = 0.0f; usedColor.colorName = (char*)"Vert";
+	backgroundColor.red = 1.0f; backgroundColor.green = 1.0f; backgroundColor.blue = 1.0f; backgroundColor.colorName = (char*)"Blanc";
 	tool.setSelectedTool(1);
 
 	// Window Instantiation
 	glutInit(&argc, argv);
 	painting = GlutWindow(windowWidth, windowHeight, (char*)"Travail Pratique 1");
+	glClearColor(backgroundColor.red, backgroundColor.green, backgroundColor.blue, 0); tool.reDraw(point, line, triangle, quad, usedColor, program);
 
 	//Fonctions de rappel
 	glutDisplayFunc(displayScene);
@@ -119,5 +121,4 @@ int main(int argc, char **argv)
 
 	glutMainLoop();
 	return 0;
-
 }

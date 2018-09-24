@@ -8,7 +8,7 @@ Point::Point() {}
 void Point::Draw(float x, float y, RGBCOLOR color, GLuint program)
 {
 	GLfloat vertex[4] = {
-		x, y, 0.0f, 1.0f,
+		x, y, 1.0f, 1.0f,
 	};
 	GLfloat vertexColor[4] = {
 		color.red, color.green, color.blue, 1.0f,
