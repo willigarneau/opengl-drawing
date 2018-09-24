@@ -33,6 +33,37 @@ void Point::Draw(float x, float y, RGBCOLOR color, GLuint program)
 			pointColorGrid[i], pointColorGrid[i+1], pointColorGrid[i+2], pointColorGrid[i+3],
 		};
 		// put the vertex buffer on gpu
+		glGenBuffers(0, &vertexBuffer); // generate opengl buffer
+		glEnableVertexAttribArray(0); // allocate address 0 to link our vbo
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer); // link vbo to vertex buffer attribute
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertex), &cpyVertex, GL_STREAM_DRAW); // insert data to buffer
+		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+		// put the color buffer on gpu
+		glGenBuffers(1, &colorBuffer);
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertexColor), &cpyVertexColor, GL_STREAM_DRAW);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+		// draw
+		glUseProgram(program);
+		glPointSize(15);
+		glDrawArrays(GL_POINTS, 0, Size() / 4);
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+	}
+}
+
+void Point::reDraw(GLuint program)
+{
+	GLuint vertexBuffer, colorBuffer;
+	for (int i = 0; i < Size(); i += 4) {
+		GLfloat cpyVertex[4] = {
+			pointGrid[i], pointGrid[i + 1], pointGrid[i + 2], pointGrid[i + 3],
+		};
+		GLfloat cpyVertexColor[4] = {
+			pointColorGrid[i], pointColorGrid[i + 1], pointColorGrid[i + 2], pointColorGrid[i + 3],
+		};
+		// put the vertex buffer on gpu
 		glGenBuffers(1, &vertexBuffer); // generate opengl buffer
 		glEnableVertexAttribArray(0); // allocate address 0 to link our vbo
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer); // link vbo to vertex buffer attribute

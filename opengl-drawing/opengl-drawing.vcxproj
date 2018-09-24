@@ -122,6 +122,7 @@
     <ClCompile Include="GlutWindow.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Pencil.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Quadrilateral.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="GlutWindow.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="openGlHeaders.h" />
+    <ClInclude Include="Pencil.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Quadrilateral.h" />
     <ClInclude Include="ShaderLoader.h" />

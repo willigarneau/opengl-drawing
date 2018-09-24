@@ -5,6 +5,7 @@ public:
 	Quadrilateral();
 	void DrawFirstTriangle(float x, float y, RGBCOLOR color, GLuint program);
 	void DrawSecondTriangle(int indice, RGBCOLOR color, GLuint program);
+	void reDraw(RGBCOLOR color, GLuint program);
 	int Size();
 	char* Name();
 	void Clear();

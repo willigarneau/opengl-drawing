@@ -73,6 +73,40 @@ void Line::Draw(float x, float y, RGBCOLOR color, GLuint program)
 	}
 }
 
+void Line::reDraw(GLuint program)
+{
+	GLuint vertexBuffer, colorBuffer;
+	for (int i = 0; i < Size(); i += 8) {
+
+		GLfloat cpyVertex[8] = {
+			lineGrid[i], lineGrid[i + 1], lineGrid[i + 2], lineGrid[i + 3],
+			lineGrid[i + 4], lineGrid[i + 5], lineGrid[1 + 6], lineGrid[i + 7]
+		};
+		// put the vertex buffer on gpu
+		glGenBuffers(1, &vertexBuffer); // generate opengl buffer
+		glEnableVertexAttribArray(0); // allocate address 0 to link our vbo
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer); // link vbo to vertex buffer attribute
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertex), &cpyVertex, GL_STREAM_DRAW); // insert data to buffer
+		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+		GLfloat cpyVertexColor[8] = {
+			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
+			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
+		};
+		// put the color buffer on gpu
+		glGenBuffers(1, &colorBuffer);
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertexColor), &cpyVertexColor, GL_STREAM_DRAW);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+		// draw
+		glUseProgram(program);
+		glLineWidth(3);
+		glDrawArrays(GL_LINES, 0, Size() / 4);
+		glDisableVertexAttribArray(0);
+	}
+}
+
 int Line::Size()
 {
 	return lineGrid.size();

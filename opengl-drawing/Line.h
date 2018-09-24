@@ -4,6 +4,7 @@ class Line
 public:
 	Line();
 	void Draw(float x, float y, RGBCOLOR color, GLuint program);
+	void reDraw(GLuint program);
 	int Size();
 	char* Name();
 	void Clear();

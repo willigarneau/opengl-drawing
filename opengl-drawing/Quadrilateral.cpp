@@ -134,6 +134,44 @@ void Quadrilateral::DrawSecondTriangle(int indice, RGBCOLOR color, GLuint progra
 	}
 }
 
+void Quadrilateral::reDraw(RGBCOLOR color, GLuint program)
+{
+	GLuint vertexBuffer, colorBuffer;
+	for (int i = 0; i < Size(); i += 16) {
+		GLfloat cpyVertex[16] = {
+			quadGrid[i], quadGrid[i + 1], quadGrid[i + 2], quadGrid[i + 3],
+			quadGrid[i + 4], quadGrid[i + 5], quadGrid[1 + 6], quadGrid[i + 7],
+			quadGrid[i + 8], quadGrid[i + 9], quadGrid[i + 10], quadGrid[i + 11],
+		};
+		// put the vertex buffer on gpu
+		glGenBuffers(1, &vertexBuffer); // generate opengl buffer
+		glEnableVertexAttribArray(0); // allocate address 0 to link our vbo
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer); // link vbo to vertex buffer attribute
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertex), &cpyVertex, GL_STREAM_DRAW); // insert data to buffer
+		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+		GLfloat cpyVertexColor[16] = {
+			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
+			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
+			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
+		};
+		// put the color buffer on gpu
+		glGenBuffers(1, &colorBuffer);
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertexColor), &cpyVertexColor, GL_STREAM_DRAW);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+		// draw
+		glUseProgram(program);
+		glLineWidth(3);
+		glDrawArrays(GL_TRIANGLES, 0, Size() / 4);
+
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		DrawSecondTriangle(i, color, program);
+	}
+}
+
 int Quadrilateral::Size()
 {
 	return quadGrid.size();

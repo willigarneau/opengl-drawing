@@ -54,6 +54,9 @@
     <ClCompile Include="Quadrilateral.cpp">
       <Filter>Fichiers sources\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Pencil.cpp">
+      <Filter>Fichiers sources\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Triangle.h">
@@ -79,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="openGlHeaders.h">
       <Filter>Fichiers d%27en-tête\Ressources headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pencil.h">
+      <Filter>Fichiers d%27en-tête\Shapes headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

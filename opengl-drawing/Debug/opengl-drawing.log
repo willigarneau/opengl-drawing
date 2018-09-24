@@ -1,4 +1,3 @@
-﻿  Main.cpp
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(69): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(70): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+﻿  Tool.cpp
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\tool.cpp(31): warning C4715: 'Tool::getSelectedTool' : les chemins de contrôle ne retournent pas tous une valeur
   opengl-drawing.vcxproj -> K:\Session 5\Infographie\Semaine 5\Travail Pratique 1\opengl-drawing\Debug\opengl-drawing.exe
