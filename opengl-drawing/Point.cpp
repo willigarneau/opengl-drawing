@@ -48,6 +48,7 @@ void Point::Draw(float x, float y, RGBCOLOR color, GLuint program)
 		glUseProgram(program);
 		glPointSize(15);
 		glDrawArrays(GL_POINTS, 0, Size() / 4);
+
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 	}
