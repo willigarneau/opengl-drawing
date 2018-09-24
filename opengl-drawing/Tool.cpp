@@ -18,6 +18,7 @@ void Tool::reDraw(Point p, Line l, Triangle t, Quadrilateral q, RGBCOLOR color, 
 	glClear(GL_COLOR_BUFFER_BIT);
 	p.reDraw(program);
 	l.reDraw(program);
+	t.reDraw(program);
 	q.reDraw(color, program);
 	// need to add other shapes
 }

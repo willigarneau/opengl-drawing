@@ -104,6 +104,7 @@ void Line::reDraw(GLuint program)
 		glLineWidth(3);
 		glDrawArrays(GL_LINES, 0, Size() / 4);
 		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
 	}
 }
 

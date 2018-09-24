@@ -84,6 +84,43 @@ void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 	}
 }
 
+void Triangle::reDraw(GLuint program)
+{
+	GLuint vertexBuffer, colorBuffer;
+	for (int i = 0; i < Size(); i += 12) {
+
+		GLfloat cpyVertex[12] = {
+			triangleGrid[i], triangleGrid[i + 1], triangleGrid[i + 2], triangleGrid[i + 3],
+			triangleGrid[i + 4], triangleGrid[i + 5], triangleGrid[1 + 6], triangleGrid[i + 7],
+			triangleGrid[i + 8], triangleGrid[i + 9], triangleGrid[i + 10], triangleGrid[i + 11],
+		};
+		// put the vertex buffer on gpu
+		glGenBuffers(1, &vertexBuffer); // generate opengl buffer
+		glEnableVertexAttribArray(0); // allocate address 0 to link our vbo
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer); // link vbo to vertex buffer attribute
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertex), &cpyVertex, GL_STREAM_DRAW); // insert data to buffer
+		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+		GLfloat cpyVertexColor[12] = {
+			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
+			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
+			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
+		};
+		// put the color buffer on gpu
+		glGenBuffers(1, &colorBuffer);
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cpyVertexColor), &cpyVertexColor, GL_STREAM_DRAW);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+		// draw
+		glUseProgram(program);
+		glLineWidth(3);
+		glDrawArrays(GL_TRIANGLES, 0, Size() / 4);
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+	}
+}
+
 int Triangle::Size()
 {
 	return triangleGrid.size();
