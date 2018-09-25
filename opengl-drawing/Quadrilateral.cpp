@@ -9,7 +9,7 @@ bool firstClicked, secondClicked, thirdClicked;
 
 Quadrilateral::Quadrilateral() {}
 
-void Quadrilateral::DrawFirstTriangle(float x, float y, RGBCOLOR color, GLuint program)
+void Quadrilateral::DrawFirstTriangle(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	GLfloat vertex[16] = {
 		firstTempClick[0], firstTempClick[1], 0.0f, 1.0f,
@@ -40,21 +40,21 @@ void Quadrilateral::DrawFirstTriangle(float x, float y, RGBCOLOR color, GLuint p
 	quadGrid.push_back(vertex[14]);
 	quadGrid.push_back(vertex[15]);
 	// add float items to color grid
-	quadColorGrid.push_back(vertexColor[0]);
-	quadColorGrid.push_back(vertexColor[1]);
-	quadColorGrid.push_back(vertexColor[2]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[0]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[1]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[2]);
 	quadColorGrid.push_back(vertexColor[3]);
-	quadColorGrid.push_back(vertexColor[0]);
-	quadColorGrid.push_back(vertexColor[1]);
-	quadColorGrid.push_back(vertexColor[2]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[0]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[1]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[2]);
 	quadColorGrid.push_back(vertexColor[3]);
-	quadColorGrid.push_back(vertexColor[0]);
-	quadColorGrid.push_back(vertexColor[1]);
-	quadColorGrid.push_back(vertexColor[2]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[0]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[1]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[2]);
 	quadColorGrid.push_back(vertexColor[3]);
-	quadColorGrid.push_back(vertexColor[0]);
-	quadColorGrid.push_back(vertexColor[1]);
-	quadColorGrid.push_back(vertexColor[2]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[0]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[1]);
+	random ? quadColorGrid.push_back((rand() % 255) / 255.0) : quadColorGrid.push_back(vertexColor[2]);
 	quadColorGrid.push_back(vertexColor[3]);
 #pragma endregion
 
@@ -74,8 +74,8 @@ void Quadrilateral::DrawFirstTriangle(float x, float y, RGBCOLOR color, GLuint p
 
 		GLfloat cpyVertexColor[16] = {
 			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
-			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
-			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
+			quadColorGrid[i + 4], quadColorGrid[i + 5], quadColorGrid[i + 6], quadColorGrid[i + 7],
+			quadColorGrid[i + 8], quadColorGrid[i + 9], quadColorGrid[i + 10], quadColorGrid[i + 11],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -114,9 +114,9 @@ void Quadrilateral::DrawSecondTriangle(int indice, RGBCOLOR color, GLuint progra
 		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 		GLfloat cpyVertexColor[16] = {
-			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
-			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
-			quadColorGrid[i], quadColorGrid[i + 1], quadColorGrid[i + 2], quadColorGrid[i + 3],
+			quadColorGrid[i + 4], quadColorGrid[i + 5], quadColorGrid[i + 6], quadColorGrid[i + 7],
+			quadColorGrid[i + 8], quadColorGrid[i + 9], quadColorGrid[i + 10], quadColorGrid[i + 11],
+			quadColorGrid[i + 12], quadColorGrid[i + 13], quadColorGrid[i + 14], quadColorGrid[i + 15],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -227,10 +227,10 @@ void Quadrilateral::thirdClick(float x, float y)
 	thirdTempClick[1] = y;
 }
 
-void Quadrilateral::Process(float x, float y, RGBCOLOR color, GLuint program)
+void Quadrilateral::Process(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	if (!isFirstClicked() && !isSecondClicked() && !isThirdClicked()) { firstClick(x, y); return; }
 	if (isFirstClicked() && !isSecondClicked() && !isThirdClicked()) { secondClick(x, y); return; }
 	if (isFirstClicked() && isSecondClicked() && !isThirdClicked()) { thirdClick(x, y); return; }
-	if (isFirstClicked() && isSecondClicked() && isThirdClicked()) { DrawFirstTriangle(x, y, color, program); return; }
+	if (isFirstClicked() && isSecondClicked() && isThirdClicked()) { DrawFirstTriangle(x, y, random, color, program); return; }
 }

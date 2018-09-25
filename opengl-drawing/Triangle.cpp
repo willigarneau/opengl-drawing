@@ -8,7 +8,7 @@ bool triFirstClicked = false, triSecondClicked = false;
 
 Triangle::Triangle() {}
 
-void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
+void Triangle::Draw(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	GLfloat vertex[12] = {
 		triFirstTempClick[0], triFirstTempClick[1], 0.0f, 1.0f,
@@ -34,17 +34,17 @@ void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 	triangleGrid.push_back(vertex[10]);
 	triangleGrid.push_back(vertex[11]);
 	// add float items to color grid
-	triangleColorGrid.push_back(vertexColor[0]);
-	triangleColorGrid.push_back(vertexColor[1]);
-	triangleColorGrid.push_back(vertexColor[2]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[0]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[1]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[2]);
 	triangleColorGrid.push_back(vertexColor[3]);
-	triangleColorGrid.push_back(vertexColor[0]);
-	triangleColorGrid.push_back(vertexColor[1]);
-	triangleColorGrid.push_back(vertexColor[2]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[0]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[1]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[2]);
 	triangleColorGrid.push_back(vertexColor[3]);
-	triangleColorGrid.push_back(vertexColor[0]);
-	triangleColorGrid.push_back(vertexColor[1]);
-	triangleColorGrid.push_back(vertexColor[2]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[0]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[1]);
+	random ? triangleColorGrid.push_back((rand() % 255) / 255.0) : triangleColorGrid.push_back(vertexColor[2]);
 	triangleColorGrid.push_back(vertexColor[3]);
 	#pragma endregion
 
@@ -65,8 +65,8 @@ void Triangle::Draw(float x, float y, RGBCOLOR color, GLuint program)
 
 		GLfloat cpyVertexColor[12] = {
 			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
-			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
-			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
+			triangleColorGrid[i + 4], triangleColorGrid[i + 5], triangleColorGrid[i + 6], triangleColorGrid[i + 7],
+			triangleColorGrid[8], triangleColorGrid[i + 9], triangleColorGrid[i + 10], triangleColorGrid[i + 11],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -103,8 +103,8 @@ void Triangle::reDraw(GLuint program)
 
 		GLfloat cpyVertexColor[12] = {
 			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
-			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
-			triangleColorGrid[i], triangleColorGrid[i + 1], triangleColorGrid[i + 2], triangleColorGrid[i + 3],
+			triangleColorGrid[i + 4], triangleColorGrid[i + 5], triangleColorGrid[i + 6], triangleColorGrid[i + 7],
+			triangleColorGrid[8], triangleColorGrid[i + 9], triangleColorGrid[i + 10], triangleColorGrid[i + 11],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -162,9 +162,9 @@ void Triangle::secondClick(float x, float y)
 	triSecondTempClick[1] = y;
 }
 
-void Triangle::Process(float x, float y, RGBCOLOR color, GLuint program)
+void Triangle::Process(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	if (!isFirstClicked() && !isSecondClicked()) { firstClick(x, y); return; }
 	if (isFirstClicked() && !isSecondClicked()) { secondClick(x, y); return; }
-	if (isFirstClicked() && isSecondClicked()) { Draw(x, y, color, program); return; }
+	if (isFirstClicked() && isSecondClicked()) { Draw(x, y, random, color, program); return; }
 }

@@ -7,14 +7,17 @@ bool clicked = false;
 
 Line::Line() {}
 
-void Line::Draw(float x, float y, RGBCOLOR color, GLuint program)
+void Line::Draw(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	GLfloat vertex[8] = {
 		tempClick[0], tempClick[1], 0.0f, 1.0f,
 		x, y, 0.0f, 1.0f,
 	};
 	GLfloat vertexColor[4] = {
-		color.red, color.green, color.blue, 1.0f,
+		color.red,
+		color.green,
+		color.blue,
+		1.0f,
 	};
 
 	#pragma region Update items grid
@@ -28,13 +31,13 @@ void Line::Draw(float x, float y, RGBCOLOR color, GLuint program)
 	lineGrid.push_back(vertex[6]);
 	lineGrid.push_back(vertex[7]);
 	// add float items to color grid
-	lineColorGrid.push_back(vertexColor[0]);
-	lineColorGrid.push_back(vertexColor[1]);
-	lineColorGrid.push_back(vertexColor[2]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[0]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[1]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[2]);
 	lineColorGrid.push_back(vertexColor[3]);
-	lineColorGrid.push_back(vertexColor[0]);
-	lineColorGrid.push_back(vertexColor[1]);
-	lineColorGrid.push_back(vertexColor[2]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[0]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[1]);
+	random ? lineColorGrid.push_back((rand() % 255) / 255.0) :lineColorGrid.push_back(vertexColor[2]);
 	lineColorGrid.push_back(vertexColor[3]);
 	#pragma endregion
 
@@ -55,7 +58,7 @@ void Line::Draw(float x, float y, RGBCOLOR color, GLuint program)
 
 		GLfloat cpyVertexColor[8] = {
 			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
-			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
+			lineColorGrid[i + 4], lineColorGrid[i + 5], lineColorGrid[i + 6], lineColorGrid[i + 7],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -91,7 +94,7 @@ void Line::reDraw(GLuint program)
 
 		GLfloat cpyVertexColor[8] = {
 			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
-			lineColorGrid[i], lineColorGrid[i + 1], lineColorGrid[i + 2], lineColorGrid[i + 3],
+			lineColorGrid[i + 4], lineColorGrid[i + 5], lineColorGrid[i + 6], lineColorGrid[i + 7],
 		};
 		// put the color buffer on gpu
 		glGenBuffers(1, &colorBuffer);
@@ -135,13 +138,13 @@ void Line::Init(float x, float y) {
 	tempClick[1] = y;
 }
 
-void Line::Process(float x, float y, RGBCOLOR color, GLuint program)
+void Line::Process(float x, float y, bool random, RGBCOLOR color, GLuint program)
 {
 	if (!isClicked()) {
 		Init(x, y);
 	}
 	else {
-		Draw(x, y, color, program);
+		Draw(x, y, random, color, program);
 	}
 }
 

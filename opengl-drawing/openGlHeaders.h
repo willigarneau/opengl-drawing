@@ -22,6 +22,7 @@ struct RGBCOLOR {
 #include "Line.h"
 #include "Pencil.h"
 #include <vector>
+#include <cstdlib>
 
 // - NAMESPACES
 using namespace std;
