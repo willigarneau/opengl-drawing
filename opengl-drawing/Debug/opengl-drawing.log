@@ -1,11 +1,7 @@
-﻿  Triangle.cpp
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(38): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(39): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(40): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(42): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(43): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(44): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(46): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(47): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\triangle.cpp(48): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+﻿  Main.cpp
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(45): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(100): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(101): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(112): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 5\travail pratique 1\opengl-drawing\opengl-drawing\main.cpp(113): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
   opengl-drawing.vcxproj -> K:\Session 5\Infographie\Semaine 5\Travail Pratique 1\opengl-drawing\Debug\opengl-drawing.exe

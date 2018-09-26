@@ -45,11 +45,11 @@ void handleMenuFunctions(int value)
 	if (value == 16) { backgroundColor.red = rand() % 255 / 255.0; backgroundColor.green = (rand() % 255) / 255.0; backgroundColor.blue = (rand() % 255) / 255.0;
 		backgroundColor.colorName = (char*)"Random";
 		glClearColor(backgroundColor.red, backgroundColor.green, backgroundColor.blue, 0); tool.reDraw(point, line, triangle, quad, pencil, usedColor, program); } // Random Background
-	if (value == 4) { tool.setSelectedTool(1); /*painting.ClearWindow(point, line, triangle, quad, pencil); */} // Point tool
-	if (value == 5) { tool.setSelectedTool(2);/* painting.ClearWindow(point, line, triangle, quad, pencil);*/ } // Line tool
-	if (value == 6) { tool.setSelectedTool(3); /*painting.ClearWindow(point, line, triangle, quad, pencil); */} // Triangle tool
-	if (value == 7) { tool.setSelectedTool(4); /*painting.ClearWindow(point, line, triangle, quad, pencil); */} // Quadrilateral tool
-	if (value == 17) { tool.setSelectedTool(5); /*painting.ClearWindow(point, line, triangle, quad, pencil);*/ } // Pencil tool
+	if (value == 4) { tool.setSelectedTool(1); painting.ClearWindow(point, line, triangle, quad, pencil); } // Point tool
+	if (value == 5) { tool.setSelectedTool(2); painting.ClearWindow(point, line, triangle, quad, pencil); } // Line tool
+	if (value == 6) { tool.setSelectedTool(3); painting.ClearWindow(point, line, triangle, quad, pencil); } // Triangle tool
+	if (value == 7) { tool.setSelectedTool(4); painting.ClearWindow(point, line, triangle, quad, pencil); } // Quadrilateral tool
+	if (value == 17) { tool.setSelectedTool(5); painting.ClearWindow(point, line, triangle, quad, pencil); } // Pencil tool
 	if (value == 0) { painting.ClearWindow(point, line, triangle, quad, pencil); glDeleteProgram(program); glutLeaveMainLoop(); } // Exit
 	if (value == -1) { painting.ClearWindow(point, line, triangle, quad, pencil); } // Erase
 
