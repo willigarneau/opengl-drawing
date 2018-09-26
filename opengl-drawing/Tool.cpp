@@ -32,7 +32,6 @@ char* Tool::getSelectedTool()
 	if (selectedTool == 3) { return (char*)toolTriangle.Name(); }
 	if (selectedTool == 4) { return (char*)toolQuad.Name(); }
 	if (selectedTool == 5) { return (char*)toolPencil.Name(); }
-
 }
 
 void Tool::setSelectedTool(int newTool)

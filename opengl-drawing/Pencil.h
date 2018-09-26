@@ -8,5 +8,6 @@ public:
 	int Size();
 	char* Name();
 	void Clear();
+	void Process(float x, float y, bool random, RGBCOLOR color, GLuint program);
 };
 

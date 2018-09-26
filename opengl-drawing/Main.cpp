@@ -103,6 +103,7 @@ void handleMouse(int button, int state, int x, int y)
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && tool.getSelectedTool() == (char*)"Ligne") { line.Process(Xndc, Yndc, random, usedColor, program); }
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && tool.getSelectedTool() == (char*)"Triangle") { triangle.Process(Xndc, Yndc, random, usedColor, program); }
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && tool.getSelectedTool() == (char*)"Quadrilateral") { quad.Process(Xndc, Yndc, random, usedColor, program); }
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && tool.getSelectedTool() == (char*)"Pencil") { pencil.Process(Xndc, Yndc, random, usedColor, program); }
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) { std::cout << "y : " << y << " Yndc : " << Yndc << std::endl; }
 }
 
@@ -110,7 +111,7 @@ void handleMouseMove(int x, int y)
 {
 	float Xndc = x * (2.0) / glutGet(GLUT_WINDOW_WIDTH) - 1.0;
 	float Yndc = -(y - glutGet(GLUT_WINDOW_HEIGHT)) * (1.0 + 1.0) / glutGet(GLUT_WINDOW_HEIGHT) - 1.0;
-	if (tool.getSelectedTool() == (char*)"Pencil") { pencil.Draw(Xndc, Yndc, random, usedColor, program); }
+	if (tool.getSelectedTool() == (char*)"Pencil") { pencil.Process(Xndc, Yndc, random, usedColor, program); }
 }
 
 
