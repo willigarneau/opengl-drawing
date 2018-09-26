@@ -120,11 +120,11 @@ void handleMouseMove(int x, int y)
 int main(int argc, char **argv)
 {
 	ShaderLoader shader;
-
+	// Set initial values
 	usedColor.red = 0.0f; usedColor.green = 1.0f; usedColor.blue = 0.0f; usedColor.colorName = (char*)"Vert";
 	backgroundColor.red = 1.0f; backgroundColor.green = 1.0f; backgroundColor.blue = 1.0f; backgroundColor.colorName = (char*)"Blanc";
 	tool.setSelectedTool(1);
-	//W
+
 	// Window Instantiation
 	glutInit(&argc, argv);
 	painting = GlutWindow(windowWidth, windowHeight, (char*)"Travail Pratique 1");
@@ -134,7 +134,6 @@ int main(int argc, char **argv)
 	glutDisplayFunc(displayScene);
 	glutMouseFunc(handleMouse);
 	glutMotionFunc(handleMouseMove);
-	//glutmotion linestrip
 
 	program = shader.CreateProgram((char*)"vertexShader.glsl", (char*)"fragmentShader.glsl");
 
